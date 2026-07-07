@@ -1,0 +1,348 @@
+/* Container Melayang ChatHead */
+#expgpt-chathead {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7f00ff, #e100ff);
+  box-shadow: 0 8px 32px rgba(225, 0, 255, 0.4);
+  z-index: 99999;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#expgpt-chathead:active {
+  cursor: grabbing;
+  transform: scale(0.9);
+}
+#expgpt-chathead svg {
+  width: 30px;
+  height: 30px;
+  fill: #ffffff;
+  animation: expGptPulse 2s infinite ease-in-out;
+}
+
+@keyframes expGptPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* Glassmorphism Panel Utama AI */
+.expgpt-panel {
+  position: fixed;
+  top: 10%;
+  right: 5%;
+  width: 400px;
+  height: 80%;
+  max-width: 90vw;
+  max-height: 85vh;
+  background: rgba(20, 20, 30, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  color: #ffffff;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  z-index: 100000;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top right;
+}
+.expgpt-panel.hidden {
+  opacity: 0;
+  transform: scale(0.8) translateY(-20px);
+  pointer-events: none;
+}
+
+/* Header UI */
+.expgpt-header {
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.expgpt-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.expgpt-brand h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, #00f2fe, #4facfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.expgpt-nav {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.expgpt-nav button {
+  background: transparent;
+  border: none;
+  color: #aaaaaa;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+.expgpt-nav button.active, .expgpt-nav button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+#expgpt-close-btn {
+  font-size: 1.5rem;
+  padding: 0 5px;
+  color: #ff4a4a;
+}
+
+/* Body / Konten */
+.expgpt-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+.expgpt-tab-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 15px;
+}
+.expgpt-tab-content.hidden {
+  display: none !important;
+}
+
+/* Chat Bubbles Area */
+.expgpt-chat-container {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.expgpt-message {
+  display: flex;
+  flex-direction: column;
+  max-width: 85%;
+}
+.expgpt-message.user {
+  align-self: flex-end;
+}
+.expgpt-message.assistant, .expgpt-message.system {
+  align-self: flex-start;
+}
+.expgpt-message .bubble {
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  word-break: break-word;
+}
+.expgpt-message.user .bubble {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+}
+.expgpt-message.assistant .bubble {
+  background: rgba(255, 255, 255, 0.07);
+  color: #f0f0f0;
+  border-bottom-left-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.expgpt-message.system .bubble {
+  background: rgba(255, 170, 0, 0.1);
+  color: #ffaa00;
+  border: 1px solid rgba(255, 170, 0, 0.2);
+}
+
+/* Utilitas Chat Tambahan (Tombol Copy/Regenerate) */
+.msg-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 0 5px;
+}
+.msg-actions span {
+  font-size: 0.75rem;
+  color: #888888;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.msg-actions span:hover {
+  color: #00c6ff;
+}
+
+/* Animasi Berpikir (Thinking Animation) */
+.thinking-bubble {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 20px !important;
+}
+.thinking-bubble span {
+  width: 6px;
+  height: 6px;
+  background-color: #aaaaaa;
+  border-radius: 50%;
+  display: inline-block;
+  animation: expGptBounce 1.4s infinite ease-in-out both;
+}
+.thinking-bubble span:nth-child(1) { animation-delay: -0.32s; }
+.thinking-bubble span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes expGptBounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1.0); }
+}
+
+/* Kotak Progres Realtime */
+.expgpt-progress-box {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.expgpt-progress-box .progress-title {
+  font-size: 0.75rem;
+  color: #00f2fe;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+.expgpt-progress-box pre {
+  margin: 0;
+  font-family: monospace;
+  font-size: 0.82rem;
+  color: #a8ffb2;
+  white-space: pre-wrap;
+}
+
+/* Area Input Form Kontrol */
+.expgpt-input-area {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.expgpt-input-area textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 10px;
+  color: #ffffff;
+  resize: none;
+  height: 60px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.expgpt-input-area textarea:focus {
+  border-color: #00c6ff;
+}
+.expgpt-action-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Form Pengaturan */
+.expgpt-settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  flex: 1;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.form-group.row-align {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+}
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+.form-group.half {
+  flex: 1;
+}
+.form-group label {
+  font-size: 0.8rem;
+  color: #cccccc;
+}
+.form-group input[type="text"], .form-group input[type="password"], .form-group input[type="number"] {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #ffffff;
+  outline: none;
+  font-size: 0.9rem;
+}
+.form-group input:focus {
+  border-color: #4facfe;
+}
+
+/* Skema Tombol Global */
+button.primary {
+  background: linear-gradient(135deg, #7f00ff, #e100ff);
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+button.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+button:hover {
+  opacity: 0.9;
+}
+.btn-block {
+  width: 100%;
+  padding: 12px !important;
+  margin-top: 5px;
+}
+
+/* Scrollbar Kustomisasi */
+.expgpt-chat-container::-webkit-scrollbar, .expgpt-settings-form::-webkit-scrollbar {
+  width: 4px;
+}
+.expgpt-chat-container::-webkit-scrollbar-thumb, .expgpt-settings-form::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.hidden {
+  display: none !important;
+}

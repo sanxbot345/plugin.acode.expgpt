@@ -1,0 +1,11 @@
+{
+  "id": "acode.plugin.expgpt",
+  "name": "ExpGPT",
+  "version": "1.0.0",
+  "author": "Senior Developer",
+  "description": "AI Workspace Assistant dengan akses penuh ke File System Acode untuk otomatisasi proyek.",
+  "main": "main.js",
+  "icon": "icons/logo.png",
+  "minSdkVersion": 150,
+  "price": 0
+}

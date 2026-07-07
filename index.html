@@ -1,0 +1,69 @@
+<div id="expgpt-panel" class="expgpt-panel hidden">
+  <div class="expgpt-header">
+    <div class="expgpt-brand">
+      <span class="expgpt-icon-glow"></span>
+      <h3>ExpGPT Workspace AI</h3>
+    </div>
+    <div class="expgpt-nav">
+      <button id="expgpt-tab-chat-btn" class="active">Chat</button>
+      <button id="expgpt-tab-settings-btn">Pengaturan</button>
+      <button id="expgpt-close-btn">&times;</button>
+    </div>
+  </div>
+
+  <div class="expgpt-body">
+    <div id="expgpt-tab-chat" class="expgpt-tab-content">
+      <div id="expgpt-chat-container" class="expgpt-chat-container">
+        <div class="expgpt-message system">
+          <div class="bubble">Halo! Saya ExpGPT. Berikan perintah seperti "Buat website toko" atau "Buat bot whatsapp", dan saya akan mengotomatisasi pembuatan aset folder beserta file kodenya secara langsung ke workspace Anda.</div>
+        </div>
+      </div>
+      
+      <div id="expgpt-progress-box" class="expgpt-progress-box hidden">
+        <div class="progress-title">Workspace Progress</div>
+        <pre id="expgpt-progress-text">Menunggu instruksi...</pre>
+      </div>
+
+      <div class="expgpt-input-area">
+        <textarea id="expgpt-chat-input" placeholder="Ask ExpGPT"></textarea>
+        <div class="expgpt-action-row">
+          <button id="expgpt-stop-btn" class="secondary hidden">Stop</button>
+          <button id="expgpt-clear-btn" class="secondary">Clear</button>
+          <button id="expgpt-send-btn" class="primary">Kirim</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="expgpt-tab-settings" class="expgpt-tab-content hidden">
+      <div class="expgpt-settings-form">
+        <div class="form-group">
+          <label>Endpoint URL</label>
+          <input type="text" id="expgpt-set-endpoint" placeholder="Contoh: https://api.openai.com/v1" />
+        </div>
+        <div class="form-group">
+          <label>API Key</label>
+          <input type="password" id="expgpt-set-apikey" placeholder="Masukkan token otentikasi API Anda" />
+        </div>
+        <div class="form-group">
+          <label>Model Name</label>
+          <input type="text" id="expgpt-set-model" placeholder="Contoh: gpt-4o atau gemini-1.5-pro" />
+        </div>
+        <div class="form-row">
+          <div class="form-group half">
+            <label>Temperature</label>
+            <input type="number" id="expgpt-set-temp" min="0" max="2" step="0.1" />
+          </div>
+          <div class="form-group half">
+            <label>Max Tokens</label>
+            <input type="number" id="expgpt-set-tokens" min="1" max="32000" />
+          </div>
+        </div>
+        <div class="form-group row-align">
+          <label for="expgpt-set-stream">Enable Streaming Mode</label>
+          <input type="checkbox" id="expgpt-set-stream" />
+        </div>
+        <button id="expgpt-save-settings-btn" class="primary btn-block">Simpan Konfigurasi</button>
+      </div>
+    </div>
+  </div>
+</div>
